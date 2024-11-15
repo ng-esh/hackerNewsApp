@@ -7,10 +7,11 @@ const BASE_URL = "https://hack-or-snooze-v3.herokuapp.com";
  */
 
 class Story {
-
-  /** Make instance of Story from data object about story:
-   *   - {storyId, title, author, url, username, createdAt}
-   */
+    /**
+     * Represents a story.
+     * - Stores data about a single story (title, author, URL, etc.)
+     * - Provides methods to process story data (e.g., extract hostname).
+     */
 
   constructor({ storyId, title, author, url, username, createdAt }) {
     this.storyId = storyId;
@@ -20,9 +21,14 @@ class Story {
     this.username = username;
     this.createdAt = createdAt;
   }
-
-  /** Parses hostname out of URL and returns it. */
-
+  
+  /**
+   * Extracts the hostname from the URL for display purposes.
+   * Example: If URL is 'https://example.com/article', this returns 'example.com'.
+   * 
+   *  Why:
+   * - Provides a more concise view of where the story originates from.
+   */
   getHostName() {
     return new URL(this.url).host;
   }
@@ -31,13 +37,13 @@ class Story {
 
 /******************************************************************************
  * List of Story instances: used by UI to show story lists in DOM.
+ * - Represents a list of stories.
+ * - Handles fetching, adding, and removing stories using API calls. 
  */
-
 class StoryList {
   constructor(stories) {
-    this.stories = stories;
+    this.stories = stories; // Array of Story instances
   }
-
   /** Generate a new StoryList. It:
    *
    *  - calls the API
@@ -46,13 +52,20 @@ class StoryList {
    *  - returns the StoryList instance.
    */
 
+
+   
   static async getStories() {
     // Note presence of `static` keyword: this indicates that getStories is
     //  **not** an instance method. Rather, it is a method that is called on the
     //  class directly. Why doesn't it make sense for getStories to be an
     //  instance method?
 
-    // query the /stories endpoint (no auth required)
+    /**
+       * Fetches stories from the API and returns an instance of StoryList.
+       * Logic:
+       * - Static methods are called on the class itself, not on an instance. This makes sense here 
+       *   because getting a list of stories is independent of any specific instance of StoryList.
+      */
     const response = await axios({
       url: `${BASE_URL}/stories`,
       method: "GET",
@@ -65,11 +78,14 @@ class StoryList {
     return new StoryList(stories);
   }
 
-  /** Adds story data to API, makes a Story instance, adds it to story list.
-   * - user - the current instance of User who will post the story
-   * - obj of {title, author, url}
-   *
-   * Returns the new Story instance
+   /**
+   * Adds a new story to the list and updates the API.
+   * @param {User} user - The user who is adding the story.
+   * @param {Object} storyData - Contains title, author, and URL of the new story.
+   * 
+   * Logic:
+   * - Updates the local list of stories and also sends a request to the API.
+   * - Keeps user-specific lists (e.g., their own stories) in sync.
    */
 
   async addStory(user, { title, author, url }) {
@@ -87,10 +103,15 @@ class StoryList {
     return story;
   }
 
-  /** Delete story from API and remove from the story lists.
-   *
-   * - user: the current User instance
-   * - storyId: the ID of the story you want to remove
+
+   /**
+   * Removes a story from both the API and the local list.
+   * @param {User} user - The user who is removing the story.
+   * @param {string} storyId - ID of the story to be removed.
+   * 
+   * Logic:
+   * - Makes an API call to remove the story from the server.
+   * - Also updates local lists to ensure consistency, in that it keeps data consistent between client and server.
    */
 
   async removeStory(user, storyId) {
@@ -113,6 +134,8 @@ class StoryList {
 
 /******************************************************************************
  * User: a user in the system (only used to represent the current user)
+    - Represents a user, with methods for logging in, signing up, and managing favorites.
+    - Contains data about the user's stories and favorite stories.
  */
 
 class User {
@@ -170,9 +193,11 @@ class User {
   }
 
   /** Login in user with API, make User instance & return it.
-
-   * - username: an existing user's username
-   * - password: an existing user's password
+    * Logs in an existing user via the API.
+    * Returns an instance of User.
+   
+    * - username: an existing user's username
+    * - password: an existing user's password
    */
 
   static async login(username, password) {
@@ -197,7 +222,10 @@ class User {
   }
 
   /** When we already have credentials (token & username) for a user,
-   *   we can log them in automatically. This function does that.
+   *  we can log them in automatically. This function does that
+   * Logs in a user based on stored credentials (token, username).
+   * Returns an instance of User or null on failure.
+   * .
    */
 
   static async loginViaStoredCredentials(token, username) {
@@ -259,9 +287,22 @@ class User {
     });
   }
 
-  /** Return true/false if given Story instance is a favorite of this user. */
+  /**
+   * Checks if a story is in the user's favorites.
+   * @param {Story} story - The story to check.
+   * @returns {boolean} True if the story is a favorite, false otherwise.
+   */
 
   isFavorite(story) {
     return this.favorites.some(s => (s.storyId === story.storyId));
   }
 }
+// Explanation of models.js Logic
+// Why Classes? Classes allow encapsulating data and behavior related to stories and users. 
+// This keeps the logic modular and makes it easy to manage related operations.
+// 
+// Why Static Methods? Static methods, like getStories(), work on the class itself, not specific instances. 
+// This makes them great for tasks like fetching data that isn't tied to any particular StoryList object.
+
+// Why Use Constructors? Constructors make it easy to create new instances 
+// with all necessary properties, like a user's favorites or stories.

@@ -1,115 +1,116 @@
 /* General typography */
 
 body {
-  font-family: Arimo, sans-serif;
-  margin: 8px 7.5vw;
+  font-family: Arimo, sans-serif; /* Sets a clean, sans-serif font */
+  margin: 8px 7.5vw; /* Adds consistent margin around the body content */
 }
 
 h1 {
-  font-size: 1.1rem;
-  margin: 0;
+  font-size: 1.1rem; /* Sets a relatively small font size for main headings */
+  margin: 0; /* Removes default margin */
 }
 
+
 h4 {
-  font-size: 1rem;
-  margin: 0;
+  font-size: 1rem; /* Slightly smaller font for subheadings */
+  margin: 0; /* Removes default margin */
 }
 
 h5 {
-  font-size: 0.9rem;
-  font-weight: lighter;
+  font-size: 0.9rem; /* Smaller font size for minor headings */
+  font-weight: lighter; /* Reduces font weight for a softer appearance */
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+  text-decoration: none; /* Removes underlines from links */
+  color: inherit; /* Makes links adopt the current text color */
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /* Underlines links on hover for better UX */
 }
 
 
-/* Site layout */
+/* Site layout styling */
 
 /* This is the basic box that the main part of the page goes into */
 .container {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  background-color: #f6f6ef;
+  display: flex; /* Makes the container a flex container */
+  flex-direction: column; /* Arranges child elements vertically */
+  align-self: center; /* Centers container content */
+  background-color: #f6f6ef; /* Sets a light background color */
 }
 
 .stories-container{
-  height: calc(100vh - 100px);
-  overflow: scroll;
+  height: calc(100vh - 100px); /* Takes up most of the viewport height */
+  overflow: scroll; /* Enables scrolling for overflowing content */
 }
 
 
 .hidden {
-  display: none;
+  display: none; /* Completely hides elements */
 }
 
 
-/* Forms */
+/* Forms styling*/
 
 form {
-  display: flex;
-  flex-direction: column;
-  margin: 8px 18px 0;
+  display: flex; /* Makes form elements flexible */
+  flex-direction: column; /* Arranges input fields and buttons vertically */
+  margin: 8px 18px 0; /* Adds margin around forms */
 }
 
 form > * {
-  margin: 10px 0;
+  margin: 10px 0;  /* Adds margin between form elements */
 }
 
 form label {
-  font-size: 0.9rem;
-  font-weight: 700;
-  display: inline-block;
-  width: 3.5rem;
-  text-align: right;
-  margin-right: 5px;
+  font-size: 0.9rem; /* Sets a smaller font size for form labels */
+  font-weight: 700; /* Makes labels bold */
+  display: inline-block; /* Makes labels behave like inline elements */
+  width: 3.5rem; /* Fixes label width */
+  text-align: right; /* Aligns text to the right */
+  margin-right: 5px; /* Adds spacing to the right of labels */
 }
 
 form input {
-  font-size: 0.8rem;
-  border: none;
-  border-radius: 2px;
-  padding: 8px;
-  width: 300px;
-  box-shadow: 0 0 3px 1px lightgray;
+  font-size: 0.8rem; /* Sets input text size */
+  border: none; /* Removes default borders */
+  border-radius: 2px; /* Rounds corners of input fields */
+  padding: 8px; /* Adds padding for input fields */
+  width: 300px; /* Sets a fixed width for input fields */
+  box-shadow: 0 0 3px 1px lightgray; /* Adds a subtle shadow around input */
 }
 
 form input:focus {
-  outline: none;
-  box-shadow: 0 0 4px 1px darkgray;
+  outline: none; /* Removes default outline on focus */
+  box-shadow: 0 0 4px 1px darkgray; /* Enhances shadow on focus for emphasis */
 }
 
 form > button {
-  width: 4rem;
-  margin: 5px 0 15px 65px;
-  border: none;
-  border-radius: 4px;
-  padding: 8px;
-  font-size: 0.85rem;
-  background-color: lightslategray;
-  color: white;
-  cursor: pointer;
-  transition: all 0.15s;
+  width: 4rem; /* Sets button width */
+  margin: 5px 0 15px 65px; /* Adds margin around buttons */
+  border: none; /* Removes default borders */
+  border-radius: 4px; /* Rounds button corners */
+  padding: 8px; /* Adds padding */
+  font-size: 0.85rem; /* Sets font size */
+  background-color: lightslategray; /* Sets background color */
+  color: white; /* Sets text color */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  transition: all 0.15s; /* Smoothens hover effect */
 }
 
 form > button:hover {
-  background-color: dimgray;
+  background-color: dimgray; /* Changes button color on hover */
 }
 
 form > hr {
-  margin: 0;
-  border: 1px solid lightgray;
+  margin: 0; /* Removes default margin */
+  border: 1px solid lightgray; /* Adds a light gray line */
 }
 
 .login-input label {
-  width: 70px;
+  width: 70px; /* Sets a wider label width for login forms */
 }
 
 
@@ -117,13 +118,22 @@ form > hr {
 
 @media screen and (max-width: 576px) {
   body {
-    margin: 0;
+    margin: 0;  /* Removes margin for smaller screens */
   }
 }
 
 @media screen and (min-width: 992px) {
   body {
-    max-width: 900px;
-    margin: 8px auto;
+    max-width: 900px; /* Limits max width for large screens */
+    margin: 8px auto; /* Centers content for large screens */
   }
 }
+/* Explanation of site.css Logic
+Consistent Typography and Layout: Establishes consistent text styles and layout elements, 
+making the site visually cohesive.
+
+Flexbox Containers: Ensures responsive and adaptable layout structures using Flexbox.
+
+Form Styling: Improves form UX with padding, focus effects, and layout alignment for labels and inputs.
+
+Responsive Media Queries: Adapts margin and content width for different screen sizes. */

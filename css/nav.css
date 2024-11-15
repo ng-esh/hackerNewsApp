@@ -1,31 +1,41 @@
 /* Navigation bar */
 
 nav {
-  display: flex;
-  background-color: #ff6600;
-  align-items: center;
-  padding: 5px 20px;
-  border-radius: 3px 3px 0 0;
+  display: flex; /* Makes the nav elements align horizontally */
+  background-color: #ff6600; /* Sets a bright orange background color for the nav */
+  align-items: center;  /* Vertically centers items in the nav bar */
+  padding: 5px 20px; /* Adds padding around the content */
+  border-radius: 3px 3px 0 0; /* Rounds the top corners slightly for a smoother look */
 }
 
 .navbar-brand {
-  font-weight: bold;
+  font-weight: bold; /* Makes the brand name stand out */
 }
 
 .main-nav-links {
-  margin: 0 10px;
-  font-size: 20px;
-  justify-content: center;
-  align-items: center;
+  margin: 0 10px; /* Adds horizontal margin between links for spacing */
+  font-size: 20px; /* Sets the font size for navigation links */
+  justify-content: center; /* Centers links horizontally */
+  align-items: center;  /* Centers links vertically */
 }
 
 
 .nav-link {
-  font-size: 0.85rem;
-  margin: 0 3px;
+  font-size: 0.85rem; /* Sets a smaller font size for individual nav links */
+  margin: 0 3px; /* Adds minimal spacing between nav links */
 }
 
 .nav-right {
-  margin-left: auto;
-  text-align: right;
+  margin-left: auto; /* Pushes the content to the right side of the nav */
+  text-align: right; /* Aligns text to the right */
 }
+
+/* Explanation of nav.css Logic
+Flexbox for Layout: The navigation bar uses display: flex to align its items horizontally, 
+ensuring consistent positioning and spacing.
+
+Why Margin and Padding? Padding creates space inside the navigation bar, giving its content room to breathe, 
+while margin controls spacing between elements. 
+
+Color Choices and Font Styling: Bright colors and bold text ensure important elements 
+like the brand name stand out. */

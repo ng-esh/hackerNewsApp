@@ -18,9 +18,11 @@
 <!-- top navigation bar -->
 <nav>
   <div class="navbar-brand">
+    <!-- Clickable link to show all stories -->
     <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
   </div>
   <div class="nav-right">
+    <!-- Navigation links for login/signup, story submission, user profile, and logout -->
     <a class="nav-link" href="#" id="nav-login">login/signup</a>
     <a class="nav-link" href="#" id="nav-submit">submit</a> <!-- New submit link -->
     <a class="nav-link" href="#" id="nav-user-profile"></a>
@@ -30,14 +32,16 @@
 
 <!-- area for stories (all stories, user stories, favorites) -->
 <section class="stories-container container">
-  <div id="stories-loading-msg">Loading&hellip;</div>
-  <ol id="all-stories-list" class="stories-list"></ol>
+  <div id="stories-loading-msg">Loading&hellip;</div>  <!-- Initial loading message -->
+  <ol id="all-stories-list" class="stories-list"></ol> <!-- Ordered list to display stories -->
 </section>
+
 
 <!-- Story submission form -->
 <section class="story-form-container container hidden"> <!-- Initially hidden -->
   <form id="story-form" method="post">
     <h4>Submit a New Story</h4>
+    <!-- Form fields for title, URL, and author input -->
     <div class="form-group">
       <label for="story-title">Title</label>
       <input id="story-title" name="title" type="text" required>
@@ -50,7 +54,8 @@
       <label for="story-author">Author</label>
       <input id="story-author" name="author" type="text" required>
     </div>
-    <button type="submit">Submit</button>
+    <button type="submit">Submit</button> <!-- Submit button for the form -->
+  </form>
   </form>
 </section>
 
@@ -59,34 +64,39 @@
   <!-- Login form -->
   <form action="#" id="login-form" class="account-form hidden" method="post">
     <h4>Login</h4>
+    <!-- Username input -->
     <div class="login-input">
       <label for="login-username">username</label>
       <input id="login-username" autocomplete="current-username">
     </div>
+    <!-- Password input -->
     <div class="login-input">
       <label for="login-password">password</label>
       <input id="login-password" type="password" autocomplete="current-password">
     </div>
-    <button type="submit">login</button>
+    <button type="submit">login</button> <!-- Submit button for login -->
     <hr>
   </form>
 
   <!-- Signup form -->
   <form action="#" id="signup-form" class="account-form hidden" method="post">
     <h4>Create Account</h4>
+    <!-- Name input -->
     <div class="login-input">
       <label for="signup-name">name</label>
       <input id="signup-name" autocapitalize="words">
     </div>
+    <!-- Username input -->
     <div class="login-input">
       <label for="signup-username">username</label>
       <input id="signup-username" autocomplete="new-username">
     </div>
+     <!-- Password input -->
     <div class="login-input">
       <label for="signup-password">password</label>
       <input id="signup-password" autocomplete="new-password" type="password">
     </div>
-    <button type="submit">create account</button>
+    <button type="submit">create account</button> <!-- Submit button for signup -->
   </form>
 </section>
 

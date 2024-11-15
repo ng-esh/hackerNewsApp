@@ -1,26 +1,31 @@
 /* Login and signup forms */
 
 .account-form button {
-  width: 4rem;
-  margin-left: 80px;
+  width: 4rem; /* Sets button width */
+  margin-left: 80px; /* Adds left margin */
 }
 
 #signup-form button {
-  width: 8rem;
+  width: 8rem; /* Sets a wider width for signup button */
 }
 
 .account-forms-container {
-  padding-left: 20px;
+  padding-left: 20px; /* Adds left padding for forms */
 }
 
 
 /* User profile */
 
 .user-profile-box {
-  padding: 10px 20px 20px;
-  font-size: 0.9rem;
+  padding: 10px 20px 20px; /* Adds padding around the box */
+  font-size: 0.9rem; /* Sets font size */
 }
 
 .user-profile-box > * {
-  margin: 10px 0;
+  margin: 10px 0; /* Adds vertical margin between elements */
 }
+
+/* 
+Explanation of user.css Logic
+Form Styling: Ensures consistent button sizes and form alignment for login and signup forms.
+User Profile: Adds padding and margin for a clean, organized display of user profile data. */

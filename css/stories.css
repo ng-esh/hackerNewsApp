@@ -1,63 +1,72 @@
 /* Lists of stories */
 
 .stories-list {
-  margin: 20px 5px;
+  margin: 20px 5px; /* Adds space around story lists */
 }
 
 .stories-list > li {
-  color: gray;
-  font-size: 0.8rem;
-  margin: 10px 0;
+  color: gray; /* Sets text color */
+  font-size: 0.8rem; /* Small font size */
+  margin: 10px 0; /* Adds vertical spacing between list items */
 }
 
 #favorited-stories,
 #my-stories {
-  list-style: none;
-  padding-left: 20px;
+  list-style: none; /* Removes default list styling */
+  padding-left: 20px; /* Adds left padding */
 }
 
 #stories-loading-msg {
-  font-weight: bold;
-  font-size: 150%;
-  margin: 20px 30px;
+  font-weight: bold; /* Emphasizes loading message */
+  font-size: 150%; /* Increases font size */
+  margin: 20px 30px; /* Adds margin */
 }
 
 
-/* Individual stories */
+/* styling for  individual stories */
 .star,
 .trash-can {
-  font-size: 0.75rem;
-  margin: 0 5px;
-  cursor: pointer;
+  font-size: 0.75rem; /* Sets icon size */
+  margin: 0 5px;  /* Adds margin around icons */
+  cursor: pointer; /* Changes cursor to pointer on hover */
 }
 
 .trash-can:hover {
-  color: crimson;
+  color: crimson; /* Changes color on hover */
 }
 
 
 .story-link {
-  color: black;
-  font-size: 0.85rem;
-  font-weight: normal;
-  margin: 18px 0;
+  color: black; /* Sets link color */
+  font-size: 0.85rem; /* Sets font size */
+  font-weight: normal; /* Normal font weight */
+  margin: 18px 0; /* Adds margin */
 }
 
 .story-link:hover {
-  text-decoration: none;
+  text-decoration: none; /* Removes underline on hover */
 
 }
 
 .story-author {
-  margin-left: 2em;
-  font-size: 0.85rem;
-  color: green;
-  padding: 6px 0;
+  margin-left: 2em; /* Adds left margin */
+  font-size: 0.85rem; /* Sets font size */
+  color: green; /* Sets text color */
+  padding: 6px 0; /* Adds padding */
 }
 
 .story-user {
-  display: block;
-  margin-left: 2em;
-  font-size: 0.85rem;
-  color: orange;
+  display: block; /* Makes element block-level */
+  margin-left: 2em; /* Adds left margin */
+  font-size: 0.85rem; /* Sets font size */
+  color: orange; /* Sets text color */
 }
+
+/* Explanation of stories.css Logic
+List Styling: Ensures lists of stories are readable and well-spaced.
+
+Icon and Link Styling: Improves UX by using hover effects, color changes, 
+and clear clickable cues.
+
+Story-Specific Styles: Differentiates story elements (e.g., author, user) for better readability.
+ */

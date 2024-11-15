@@ -7,8 +7,8 @@ let currentUser;
  * User login/signup/login
  */
 
-/** Handle login form submission. If login ok, sets up the user instance */
-
+/** Handle login form submission. If login ok, sets up the user instance 
+/** Handles user login and updates the UI if successful. */
 async function login(evt) {
   console.debug("login", evt);
   evt.preventDefault();
@@ -17,20 +17,18 @@ async function login(evt) {
   const username = $("#login-username").val();
   const password = $("#login-password").val();
 
-  // User.login retrieves user info from API and returns User instance
-  // which we'll make the globally-available, logged-in user.
+  // Calls User.login to authenticate and get user data
   currentUser = await User.login(username, password);
 
-  $loginForm.trigger("reset");
+  $loginForm.trigger("reset"); // Clears the form
 
-  saveUserCredentialsInLocalStorage();
-  updateUIOnUserLogin();
+  saveUserCredentialsInLocalStorage();  // Saves credentials to localStorage for auto-login
+  updateUIOnUserLogin(); // Updates the UI to show user-specific features
 }
 
 $loginForm.on("submit", login);
 
 /** Handle signup form submission. */
-
 async function signup(evt) {
   console.debug("signup", evt);
   evt.preventDefault();
@@ -39,14 +37,13 @@ async function signup(evt) {
   const username = $("#signup-username").val();
   const password = $("#signup-password").val();
 
-  // User.signup retrieves user info from API and returns User instance
-  // which we'll make the globally-available, logged-in user.
+  // Registers a new user
   currentUser = await User.signup(username, password, name);
 
-  saveUserCredentialsInLocalStorage();
-  updateUIOnUserLogin();
+  saveUserCredentialsInLocalStorage(); // Saves credentials for next visit
+  updateUIOnUserLogin();  // Updates UI
 
-  $signupForm.trigger("reset");
+  $signupForm.trigger("reset"); // Clears form inputs
 }
 
 $signupForm.on("submit", signup);
@@ -58,8 +55,8 @@ $signupForm.on("submit", signup);
 
 function logout(evt) {
   console.debug("logout", evt);
-  localStorage.clear();
-  location.reload();
+  localStorage.clear(); // Removes user data from localStorage
+  location.reload(); // Refreshes the page to reset state
 }
 
 $navLogOut.on("click", logout);
@@ -87,7 +84,6 @@ async function checkForRememberedUser() {
  * We store the username/token in localStorage so when the page is refreshed
  * (or the user revisits the site later), they will still be logged in.
  */
-
 function saveUserCredentialsInLocalStorage() {
   console.debug("saveUserCredentialsInLocalStorage");
   if (currentUser) {
@@ -106,18 +102,17 @@ function saveUserCredentialsInLocalStorage() {
  * - update nav bar options for logged-in user
  * - generate the user profile part of the page
  */
-
 async function updateUIOnUserLogin() {
   console.debug("updateUIOnUserLogin");
 
-  hidePageComponents();
+  hidePageComponents(); // Hides other components
 
   // re-display stories (so that "favorite" stars can appear)
-  putStoriesOnPage();
-  $allStoriesList.show();
+  putStoriesOnPage(); // Displays stories
+  $allStoriesList.show(); // Shows the main story list
 
-  updateNavOnLogin();
-  generateUserProfile();
+  updateNavOnLogin(); // Updates nav bar to reflect login status
+  generateUserProfile(); // Displays user profile data
   $storiesContainer.show()
 }
 
@@ -128,5 +123,15 @@ function generateUserProfile() {
 
   $("#profile-name").text(currentUser.name);
   $("#profile-username").text(currentUser.username);
-  $("#profile-account-date").text(currentUser.createdAt.slice(0, 10));
+  $("#profile-account-date").text(currentUser.createdAt.slice(0, 10));  // Formats date
 }
+
+// Explanation of user.js Logic
+// Purpose: This file manages user authentication, saving credentials, 
+// and handling UI updates related to user state.
+
+// Why Save Credentials? Storing login credentials in localStorage enables automatic login, 
+// enhancing user experience.
+
+// Why Separate Login and Signup? These processes are different in terms of API requests, 
+// so separating them simplifies logic and debugging.
